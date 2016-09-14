@@ -1,26 +1,27 @@
 # CppRoaring4VS
-C++ Roaring bitmaps for microsoft Visual Studio 2015 compiled with clang.
 
+[CRoaring](https://github.com/RoaringBitmap/CRoaring) is a C11-compliant library providing [compressed Roaring bitmaps](http://roaringbitmap.org). CppRoaring4VS provides a
+C++ wrapper for Microsoft Visual Studio 2015.
 
-# Introduction
-
-A C++ wrapper around the CRoaring project to enable compilation of CRoaring with Microsoft Visual Studio 2015 with clang.
-
-[CRoaring]: https://github.com/RoaringBitmap/CRoaring
+CRoaring: https://github.com/RoaringBitmap/CRoaring
 
 
 # Objective
 
-The primary goal of the CRoaringVS is to provide a static library that can be used in Microsoft Visual Studio 2015 compiled projects. 
+The primary goal of the CRoaringVS is to provide a static library that can be used in Microsoft Visual Studio 2015 compiled projects.
 
 
 # Requirements
 
-- The library requires Microsoft Visual Studio 2015 update 3 with clang installed. It is only tested on Windows 7.
+- Microsoft Visual Studio 2015 Community Edition update 3 or better.
+- Within Visual Studion, have "Clang with Microsoft CodeGen" installed (found under Cross Platform Mobile Development / Visual C++ Mobile Development in the Modify features list).
 
+# Usage
+
+Load ``msv/CRoaringVSLib.sln`` into Microsoft Visual Studio. The project should then build both the library and small test program that you can run.
 
 # Known shortcomings
-- Microsoft Visual Studio 2015 is not fully supporting intel intrinsics. A bug has been reported [here:] (https://connect.microsoft.com/VisualStudio/feedback/details/3102596/clang-c2-intel-intrinsics-support-for-clang)
+- Microsoft Visual Studio 2015 does not support Intel intrinsics thus we have to disable several optimizations (such as AVX2 support). A bug has been submitted:  https://connect.microsoft.com/VisualStudio/feedback/details/3102596/clang-c2-intel-intrinsics-support-for-clang
 
 # Project structure
 - Sources:
@@ -34,6 +35,7 @@ This solution contains the following 2 projects each in its own subdirectory: CR
 - Library files
 The static .lib files are in the lib directory.
 
+# Relevant Tips when working with C99/C11-standard compliant code in Visual Studio
 
-
-
+- Consider disabling Intellisense since it can't parse standard compliant C code: Tools -> Options -> Text Editor -> C/C++ -> Advanced, and set Disable Error Reporting to True.
+-  Once you have a clang CodeGen project, you can go under Configuration Properties, C/C++, Language, C Language Standard and choose between C89, C99, C11, C99 GNU, C11 GNU.
