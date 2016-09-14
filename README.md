@@ -20,8 +20,6 @@ The primary goal of the CRoaringVS is to provide a static library that can be us
 
 
 # Known shortcomings
-- Doesn't work yet due to an unresolved bug resulting in the test failing with error message:
-The Block at 0x.... was allocated by aligned routines, use _aligned_free().
 - Microsoft Visual Studio 2015 is not fully supporting intel intrinsics. A bug has been reported [here:] (https://connect.microsoft.com/VisualStudio/feedback/details/3102596/clang-c2-intel-intrinsics-support-for-clang)
 
 # Project structure
