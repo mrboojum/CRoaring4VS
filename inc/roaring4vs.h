@@ -6,7 +6,11 @@ A C++ wrapper around the CRoaring project to enable compilation of CRoaring with
 
 #include <cstdint>
 
+
+
+
 namespace roaring {
+    typedef bool (*RoaringIterator)(uint32_t value, void *param);
 
     class Roaring4VS {
     public:
@@ -152,7 +156,7 @@ namespace roaring {
          *  roaring_iterator is simply a pointer to a function that returns void,
          *  and takes (uint32_t,void*) as inputs.
          */
-         //void iterate(RoaringIterator iterator, void *ptr) const;
+         void iterate(RoaringIterator iterator, void *ptr) const;
 
          /**
           * If the size of the roaring bitmap is strictly greater than rank, then

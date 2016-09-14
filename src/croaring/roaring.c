@@ -2715,7 +2715,7 @@ void bitset_container_add_from_range(bitset_container_t *bitset, uint32_t min,
 
 /* Free memory. */
 void bitset_container_free(bitset_container_t *bitset) {
-    free(bitset->array);
+    aligned_free(bitset->array);
     bitset->array = NULL;
     free(bitset);
 }
@@ -7678,7 +7678,7 @@ void roaring_bitmap_repair_after_lazy(roaring_bitmap_t *ra) {
             container_repair_after_lazy(container, &new_typecode);
         ra->high_low_container.containers[i] = newcontainer;
         ra->high_low_container.typecodes[i] = new_typecode;
-    }
+	}
 }
 
 bool roaring_bitmap_select(const roaring_bitmap_t *bm, uint32_t rank,
