@@ -205,8 +205,8 @@ bool Roaring4VS::runOptimize() { return roaring_bitmap_run_optimize((roaring_bit
 *
 *  roaring_iterator is simply a pointer to a function that returns void,
 *  and takes (uint32_t,void*) as inputs.
-*
-void Roaring4VS::iterate(roaring_iterator iterator, void *ptr) const {
+*/
+void Roaring4VS::iterate(RoaringIterator iterator, void *ptr) const {
     roaring_iterate((roaring_bitmap_t*)roaring, iterator, ptr);
 }
 

@@ -22,14 +22,14 @@ void test_example_cpp(bool copy_on_write) {
     assert(r1.contains(500));
 
     // compute how many bits there are:
-    uint32_t cardinality = r1.cardinality();
+    uint64_t cardinality = r1.cardinality();
     std::cout << "Cardinality = " << cardinality << std::endl;
 
     // if your bitmaps have long runs, you can compress them by calling
     // run_optimize
-    uint32_t size = r1.getSizeInBytes();
+    size_t size = r1.getSizeInBytes();
     r1.runOptimize();
-    uint32_t compact_size = r1.getSizeInBytes();
+    size_t compact_size = r1.getSizeInBytes();
 
     std::cout << "size before run optimize " << size << " bytes, and after "
         << compact_size << " bytes." << std::endl;
@@ -76,7 +76,7 @@ void test_example_cpp(bool copy_on_write) {
 
     // we can write a bitmap to a pointer and recover it later
 
-    uint32_t expectedsize = r1.getSizeInBytes();
+    size_t expectedsize = r1.getSizeInBytes();
     char *serializedbytes = new char[expectedsize];
     r1.write(serializedbytes);
     Roaring4VS t = Roaring4VS::read(serializedbytes);
